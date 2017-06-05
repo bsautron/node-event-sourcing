@@ -22,6 +22,11 @@ bit.pushData({ coins: 2 })
 bit.pushData({ coins: 10 })
 bit.pushData({ coins: -2 })
 
+bit.undo()
+bit.undo()
+bit.undo()
+bit.undo()
+
 const final = bit.retrieve()
 
 console.log(final)

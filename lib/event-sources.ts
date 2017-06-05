@@ -14,6 +14,7 @@ interface IEventSources {
 	validateData (data: IEventSourcesData) : void
 	addField<T> (fieldName: string, schema: IEventProperty<T>) : void
 	retrieve () : IEventSourcesData
+	undo () : void
 }
 
 interface IEventSourcesData {
@@ -92,4 +93,9 @@ export class EventSources<T extends IEventSourcesType> implements IEventSources 
 		}, {} as IEventSourcesData)
 	}
 
+	undo () : void {
+		if (this.collection.length === 0)
+			throw `Can't undo because nothing appened...`
+		this.collection.pop()
+	}
 }
